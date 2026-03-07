@@ -1,0 +1,16 @@
+{
+  "testcases": [
+    {
+      "name": "Get All Users",
+      "endpoint": "https://jsonplaceholder.typicode.com/users",
+      "method": "GET",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Get Users Again",
+      "endpoint": "https://jsonplaceholder.typicode.com/users",
+      "method": "GET",
+      "expectedStatus": 200
+    }
+  ]
+}git
