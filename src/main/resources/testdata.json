@@ -2,15 +2,27 @@
   "testcases": [
     {
       "name": "Get All Users",
-      "endpoint": "https://jsonplaceholder.typicode.com/users",
+      "endpoint": "/users",
       "method": "GET",
       "expectedStatus": 200
     },
     {
-      "name": "Get Users Again",
-      "endpoint": "https://jsonplaceholder.typicode.com/users",
+      "name": "Get Single User",
+      "endpoint": "/users/1",
       "method": "GET",
       "expectedStatus": 200
+    },
+    {
+      "name": "Get Posts",
+      "endpoint": "/posts",
+      "method": "GET",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Get Invalid Endpoint",
+      "endpoint": "/invalid",
+      "method": "GET",
+      "expectedStatus": 404
     }
   ]
-}git
+}
