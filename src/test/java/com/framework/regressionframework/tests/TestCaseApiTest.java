@@ -1,50 +1,41 @@
 package com.framework.regressionframework.tests;
 
 import com.framework.regressionframework.utils.JsonReader;
+import com.fasterxml.jackson.databind.JsonNode;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import com.fasterxml.jackson.databind.JsonNode;
-import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class TestCaseApiTest {
+
     @Test
-    public void runTestFromJson() throws Exception {
+    public void runApiTests() throws Exception {
 
-        JsonNode testData = JsonReader.readJson("testdata.json");
-        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+        JsonNode root = JsonReader.readJson("testdata.json");
 
-        for (JsonNode testCase : testData.get("testcases")) {
+        // access the array inside "testcases"
+        JsonNode testCases = root.get("testcases");
+
+        for (JsonNode testCase : testCases) {
 
             String name = testCase.get("name").asText();
             String endpoint = testCase.get("endpoint").asText();
             int expectedStatus = testCase.get("expectedStatus").asInt();
 
+            System.out.println("Running Test: " + name);
 
-            Response rawResponse = RestAssured
+            Response response = RestAssured
                     .given()
-                    .log().all()
                     .when()
                     .get(endpoint);
 
-            int actualStatus = rawResponse.getStatusCode();
+            int actualStatus = response.getStatusCode();
 
-            System.out.println("=================================");
-            System.out.println("Running Test Case: " + name);
-            System.out.println("Endpoint: " + endpoint);
-            System.out.println("Expected Status: " + expectedStatus);
-            System.out.println("Actual Status: " + actualStatus);
-            System.out.println("=================================");
+            System.out.println("Expected: " + expectedStatus);
+            System.out.println("Actual: " + actualStatus);
 
-
-            rawResponse.then()
-                    .log().all()
-                    .statusCode(expectedStatus);
-
-            Assertions.assertEquals(expectedStatus, actualStatus,
-                    "Test failed for: " + name + " | Endpoint: " + endpoint);
+            Assert.assertEquals(actualStatus, expectedStatus);
         }
     }
 }

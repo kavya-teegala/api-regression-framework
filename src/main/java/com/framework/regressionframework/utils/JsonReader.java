@@ -16,7 +16,7 @@ public class JsonReader {
                 .getResourceAsStream(fileName);
 
         if (input == null) {
-            throw new RuntimeException("JSON file not found in resources: " + fileName);
+            throw new RuntimeException("JSON file not found: " + fileName);
         }
 
         return mapper.readTree(input);
