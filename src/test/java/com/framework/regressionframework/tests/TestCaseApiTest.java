@@ -21,7 +21,7 @@ public class TestCaseApiTest {
 
             String name = testCase.get("name").asText();
             String endpoint = testCase.get("endpoint").asText();
-            int expectedStatus = testCase.get("expectedStatus").asInt();
+             int expectedStatus = testCase.get("expectedStatus").asInt();
 
             System.out.println("Running Test: " + name);
 

@@ -1,6 +1,7 @@
 package com.framework.regressionframework.tests;
 
-import com.framework.regressionframework.base.BaseTest;
+import base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
