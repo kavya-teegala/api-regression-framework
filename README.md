@@ -1,74 +1,227 @@
-# API & UI Regression Automation Framework
+# Automated Regression Testing Framework
 
-## Project Overview
-This project is a Java-based Automation Framework developed to perform API and UI regression testing. The framework integrates REST Assured for API testing and Selenium WebDriver for UI automation to validate application functionality efficiently.
+---
 
-It supports data-driven testing using JSON files, automated test execution using TestNG, and Allure reports for detailed test reporting. The framework helps improve regression testing efficiency and ensures reliable software releases by detecting defects early.
+##  Project Overview
 
-## Tech Stack
-- Java
-- Apache Maven
-- REST Assured
-- Selenium WebDriver
-- TestNG
-- Allure Reports
-- Git & GitHub
+The **Automated Regression Testing Framework** is designed to efficiently execute, manage, and analyze regression test cases for web applications.
 
-## Project Structure
+It integrates **Selenium** for UI automation, **TestNG** for test execution, **Spring Boot** for RESTful APIs, and **MySQL** for persistent storage of test results.
 
-src/main/java  
-- base  
-- configuration  
-- utilities  
+The framework supports **parallel execution**, **automated scheduling**, and **detailed reporting**, making it scalable and suitable for real-world testing environments.
 
-src/test/java  
-- com.framework.regressionframework.tests  
+---
 
-src/test/resources  
-- testdata.json  
+##  Objectives
 
-## Features
-- API automation using REST Assured
-- UI automation using Selenium WebDriver
-- JSON-driven test data support
-- Test execution using TestNG
-- Allure reporting integration
-- Reusable utilities for framework components
-- Maven dependency management
-- Version control using GitHub
+* Automate regression testing for web applications
+* Reduce manual testing effort
+* Improve execution speed using parallel testing
+* Store and analyze test results
+* Provide APIs for test management
+* Generate detailed reports for debugging
 
-## How to Run the Tests
+---
 
-Clone the repository
+##  Tech Stack
 
-git clone https://github.com/TeegalaKavya/api-regression-framework.git
+* **Java** – Core programming language
+* **Selenium WebDriver** – UI automation
+* **TestNG** – Test execution & parallel testing
+* **Spring Boot** – REST API development
+* **Spring Data JPA** – Database interaction
+* **MySQL** – Data storage
+* **Allure Reports** – Test reporting
+* **REST Assured** – API testing
+* **Maven** – Build and dependency management
 
-Navigate to the project folder
+---
 
-cd api-regression-framework
+##  Architecture Overview
 
-Run tests
+The framework follows a layered architecture:
 
+* **Controller Layer** → Handles API requests
+* **Service Layer** → Business logic and execution
+* **Repository Layer** → Database operations (JPA)
+* **Model Layer** → Entity classes
+* **Scheduler** → Automated test execution
+
+---
+
+##  Key Features
+
+###  Test Execution
+
+* Automated UI testing using Selenium
+* Test execution using TestNG
+
+###  Parallel Execution
+
+* Multiple test cases executed simultaneously
+* Reduces overall execution time
+
+### Reporting
+
+* Allure reports with detailed insights
+* Pass/Fail status visualization
+* Screenshot capture on failure
+
+### Database Integration
+
+* Stores test results in MySQL
+* Tracks execution history
+
+### REST APIs
+
+* Fetch test results
+* Get execution summary
+* Manage test data
+
+### Scheduling
+
+* Automated test execution using Spring Boot Scheduler
+
+---
+
+##  Project Structure
+
+```
+src/main/java/com/framework/regressionframework
+│
+├── controller        # REST APIs
+├── service           # Business logic
+├── repository        # JPA repositories
+├── model             # Entity classes
+├── scheduler         # Scheduled execution
+└── RegressionFrameworkApplication.java
+```
+
+---
+
+## How to Run the Project
+
+### Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd regression-framework
+```
+
+###  Build the Project
+
+```bash
+mvn clean install
+```
+
+### Run Spring Boot Application
+
+```bash
+mvn spring-boot:run
+```
+
+### Execute Test Cases
+
+```bash
 mvn clean test
+```
 
-Generate Allure report
+### Generate Allure Report
 
-allure serve allure-results
+```bash
+allure serve
+```
 
-## Milestones Completed
+---
 
-Milestone 1
-- Project setup using Maven
-- Basic API automation framework using REST Assured
-- Initial project structure setup
-- Test execution using TestNG
+## API Endpoints
 
-Milestone 2
-- Implemented JSON-driven API testing
-- Integrated Allure reporting
-- Added Selenium UI automation integration
-- Developed and executed UI automation test scenarios
-- Updated and pushed framework to GitHub
+| Endpoint     | Method | Description            |
+| ------------ | ------ | ---------------------- |
+| `/results`   | GET    | Fetch all test results |
+| `/summary`   | GET    | Get pass/fail summary  |
+| `/execution` | GET    | Execution details      |
+
+---
+
+## Database Details
+
+* **Database**: MySQL
+* **Table**: `test_results`
+
+### Sample Fields:
+
+* `id`
+* `test_name`
+* `status`
+* `execution_time`
+
+---
+
+##  Execution Flow
+
+1. Test cases are triggered manually or via scheduler
+2. Selenium executes UI tests
+3. TestNG manages execution and parallel runs
+4. Results are stored in MySQL
+5. APIs expose test results
+6. Allure generates reports
+
+---
+
+## Screenshots (Add for better presentation)
+
+* Test execution (browser automation)
+* Console output
+* Database table
+* API response
+* Allure report
+
+---
+
+## Project Modules
+
+1. **Test Integration Engine** – Selenium & REST Assured integration
+2. **Scheduling & Execution System** – Automated test runs
+3. **Reporting & Logging Hub** – Allure reports & screenshots
+4. **Result Analytics Tracker** – Test result analysis
+
+---
+
+## Challenges Faced
+
+* Managing dependencies in Maven
+* Fixing JPA and Lombok configuration issues
+* Handling parallel execution
+* Integrating reporting tools
+
+---
+
+## Outcome
+
+* Efficient regression testing framework
+* Reduced manual effort
+* Faster execution with parallel testing
+* Centralized test result management
+* Improved debugging with reports
+
+---
+
+## Future Enhancements
+
+* CI/CD integration (Jenkins/GitHub Actions)
+* Dashboard UI for results visualization
+* Advanced analytics and trends
+* Cloud execution support
+
+---
 
 ## Author
-Kavya Teegala
+
+**Kavya**
+
+---
+
+## Acknowledgment
+
+This project was developed as part of a learning and implementation process for building a real-world automation testing framework.
