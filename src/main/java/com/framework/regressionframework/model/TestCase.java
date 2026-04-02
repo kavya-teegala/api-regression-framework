@@ -1,31 +1,28 @@
 package com.framework.regressionframework.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
 @Entity
-@Table(name = "test_case")
+@Table(name = "test_cases")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TestCase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
     private String testName;
-    @Setter
     private String moduleName;
-    @Setter
     private String status;
-    @Setter
     private String executionTime;
-
-    // Default constructor
-    public TestCase() {
-    }
-
-    public TestCase(String loginTest, String auth, String pass, String s) {
+    public TestCase(String testName, String moduleName, String status, String executionTime) {
+        this.testName = testName;
+        this.moduleName = moduleName;
+        this.status = status;
+        this.executionTime = executionTime;
     }
 }

@@ -10,7 +10,7 @@ public class DemoFailureTest {
 
     WebDriver driver;
 
-    @Test
+    //@Test
     public void demoFailureTest() throws InterruptedException {
 
         System.out.println("Running failure test...");

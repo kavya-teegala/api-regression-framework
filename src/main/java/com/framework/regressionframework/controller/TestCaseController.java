@@ -1,5 +1,6 @@
 package com.framework.regressionframework.controller;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.framework.regressionframework.model.TestCase;
 import com.framework.regressionframework.service.TestCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/testcases")
 public class TestCaseController {
-
+    private static final Logger log = LoggerFactory.getLogger(TestCaseController.class);
     @Autowired
     private TestCaseService testCaseService;
 
@@ -54,7 +55,6 @@ public class TestCaseController {
 
             return testCaseService.saveTestCase(existing);
         }
-
         return null;
     }
 }
