@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/execution")
+@CrossOrigin(origins = "*")
 public class ExecutionController {
 
     @Autowired
@@ -51,6 +52,15 @@ public class ExecutionController {
         map.put("FAIL", fail);
         map.put("TOTAL", (long) results.size());
 
+        long total = results.size() == 0 ? 1 : results.size();
+
+        map.put("PASS_PERCENT", (pass * 100) / total);
+        map.put("FAIL_PERCENT", (fail * 100) / total);
+
         return map;
+    }
+    @GetMapping("/status")
+    public String getExecutionStatus() {
+        return "Execution completed successfully";
     }
 }

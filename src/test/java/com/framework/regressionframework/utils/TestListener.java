@@ -35,7 +35,11 @@ public class TestListener implements ITestListener {
         System.out.println("Test Passed: " + result.getName());
         saveResult(result, "PASS");
     }
-
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        System.out.println("Test Skipped: " + result.getName());
+        saveResult(result, "SKIPPED");
+    }
     @Override
     public void onTestFailure(ITestResult result) {
 
@@ -58,7 +62,7 @@ public class TestListener implements ITestListener {
             }
 
             System.out.println("Test Failed: " + result.getName());
-
+            System.out.println("Reason: " + result.getThrowable());
             saveResult(result, "FAIL");
 
         } catch (Exception e) {

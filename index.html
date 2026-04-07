@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automation Dashboard</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+
+<h2>Test Automation Dashboard</h2>
+
+<button onclick="runTests()">Run Tests</button>
+<button onclick="getResults()">Get Results</button>
+
+<pre id="output" style="margin-top:20px; background:#f4f4f4; padding:10px;"></pre>
+
+<script>
+    function runTests() {
+        fetch('http://localhost:8080/execution/run', {
+            method: 'POST'
+        })
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("output").innerText = data;
+        })
+        .catch(err => console.error(err));
+    }
+
+    function getResults() {
+        fetch('http://localhost:8080/execution/results')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(err => console.error(err));
+    }
+</script>
+
+</body>
+</html>

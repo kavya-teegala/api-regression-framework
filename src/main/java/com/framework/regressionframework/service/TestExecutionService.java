@@ -8,6 +8,7 @@ public class TestExecutionService {
     private static final Logger log = LoggerFactory.getLogger(TestExecutionService.class);
     public void runTests() {
         try {
+            log.info("Executing tests using Maven...");
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command("cmd.exe", "/c", "mvn clean test");
             processBuilder.start();
